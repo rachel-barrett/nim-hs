@@ -72,12 +72,14 @@ gamePlay Human board = do
    putStrLn "Please enter your move in the format: letter number e.g. A 5"
    gamePlay Human board
   Just move -> do
-   if (fst move < 0 || fst move >= length board || board !! fst move == 0) then gamePlay Human board else do
-   let newBoard = boardSubtract move board
-   displayBoard newBoard
-   if all ((==) 0) newBoard 
-    then putStrLn "\nYou Won!\n" 
-    else gamePlay Computer newBoard
+   if (fst move < 0 || fst move >= length board || board !! fst move == 0)
+    then gamePlay Human board
+    else do
+     let newBoard = boardSubtract move board
+     displayBoard newBoard
+     if all ((==) 0) newBoard 
+      then putStrLn "\nYou Won!\n" 
+      else gamePlay Computer newBoard
 
 gamePlay Computer board = do
  putStrLn ""
