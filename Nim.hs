@@ -7,6 +7,7 @@ import Text.Read (readMaybe)
 import Control.Concurrent (threadDelay)
 import Data.Bits (xor,testBit)
 import Data.List (findIndices)
+import System.IO (hFlush, stdout)
 
 type Board = [Int]
 data Player = Human | Computer deriving (Show,Eq)
@@ -53,7 +54,7 @@ displayBoard board = do
 getStartingPlayer :: IO Player
 getStartingPlayer =
  putStrLn "" >>
- putStr "Would you like to go first or second (1/2)?: " >>
+ putStr "Would you like to go first or second (1/2)?: " >> hFlush stdout >>
  getLine >>= \response ->
  case response of
   "1" -> return Human
@@ -65,7 +66,7 @@ gamePlay :: Player -> Board -> IO ()
 
 gamePlay Human board = do
  putStrLn ""
- putStr "Your turn: "
+ putStr "Your turn: "; hFlush stdout
  maybeMove <- (<$>) parseMove getLine
  case maybeMove of
   Nothing -> do
