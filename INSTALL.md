@@ -1,4 +1,4 @@
-Assuming you have Haskell installed on your system, you can try this program by typing the following lines into your bash terminal:
+Assuming you have Haskell installed on your system, you can try this program by running the following commands in your bash terminal:
 
 ``` bash
 $ git clone https://github.com/rachel-barrett/nim-haskell
